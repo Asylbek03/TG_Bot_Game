@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\Асылбек\\Desktop\\TG_Bot_Game\\TG_Bot_Game.csproj": {}
+    "C:\\Users\\Асылбек\\Desktop\\TG_Bot_Game\\TG_Bot_Game.csproj": {}
   },
   "projects": {
-    "c:\\Users\\Асылбек\\Desktop\\TG_Bot_Game\\TG_Bot_Game.csproj": {
+    "C:\\Users\\Асылбек\\Desktop\\TG_Bot_Game\\TG_Bot_Game.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Асылбек\\Desktop\\TG_Bot_Game\\TG_Bot_Game.csproj",
+        "projectUniqueName": "C:\\Users\\Асылбек\\Desktop\\TG_Bot_Game\\TG_Bot_Game.csproj",
         "projectName": "TG_Bot_Game",
-        "projectPath": "c:\\Users\\Асылбек\\Desktop\\TG_Bot_Game\\TG_Bot_Game.csproj",
+        "projectPath": "C:\\Users\\Асылбек\\Desktop\\TG_Bot_Game\\TG_Bot_Game.csproj",
         "packagesPath": "C:\\Users\\Асылбек\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Асылбек\\Desktop\\TG_Bot_Game\\obj\\",
+        "outputPath": "C:\\Users\\Асылбек\\Desktop\\TG_Bot_Game\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Асылбек\\AppData\\Roaming\\NuGet\\NuGet.Config",

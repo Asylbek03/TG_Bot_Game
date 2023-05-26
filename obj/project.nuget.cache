@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YvFVwIZvp9ns4mX92oZbsHpRyBDjWiy4Y0gaHpSf/Gf5H/dKeHQdt99Z6aKMjeLV2AD14e9x0E11CL3T/RLzJQ==",
+  "dgSpecHash": "XWC33ymv2ALFx1+CeOZE8krWKVfc6Qbp3/InjmJkaH6IzVmYLDFnNf0nhFt1rym9NcYqNnaTxPsuhvseuy7nbg==",
   "success": true,
-  "projectFilePath": "c:\\Users\\Асылбек\\Desktop\\TG_Bot_Game\\TG_Bot_Game.csproj",
+  "projectFilePath": "C:\\Users\\Асылбек\\Desktop\\TG_Bot_Game\\TG_Bot_Game.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Асылбек\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Асылбек\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.0-preview.4.23259.3\\microsoft.entityframeworkcore.8.0.0-preview.4.23259.3.nupkg.sha512",
