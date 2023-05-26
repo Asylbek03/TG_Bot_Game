@@ -1,0 +1,5 @@
+{
+    "appService.preDeployTask": "publish-release",
+    "appService.deploySubpath": "bin\\Release\\net7.0\\publish",
+    "appService.defaultWebAppToDeploy": "/subscriptions/a6e62921-6667-4f2a-aacf-381b31211747/resourceGroups/CityGameAzureBot_group/providers/Microsoft.Web/sites/CityGameAzureBot"
+}

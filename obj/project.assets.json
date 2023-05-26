@@ -2173,19 +2173,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Асылбек\\.nuget\\packages\\": {}
+    "C:\\Users\\esmro\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Асылбек\\Desktop\\TG_Bot_Game\\TG_Bot_Game.csproj",
+      "projectUniqueName": "C:\\Azure Bot\\TG_Bot_Game\\TG_Bot_Game.csproj",
       "projectName": "TG_Bot_Game",
-      "projectPath": "c:\\Users\\Асылбек\\Desktop\\TG_Bot_Game\\TG_Bot_Game.csproj",
-      "packagesPath": "C:\\Users\\Асылбек\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Асылбек\\Desktop\\TG_Bot_Game\\obj\\",
+      "projectPath": "C:\\Azure Bot\\TG_Bot_Game\\TG_Bot_Game.csproj",
+      "packagesPath": "C:\\Users\\esmro\\.nuget\\packages\\",
+      "outputPath": "C:\\Azure Bot\\TG_Bot_Game\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Асылбек\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\esmro\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

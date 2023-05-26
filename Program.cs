@@ -8,6 +8,7 @@ using Telegram.Bot.Polling;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 
+
 namespace TG_BOT
 {
     struct BotUpdate
@@ -15,15 +16,120 @@ namespace TG_BOT
         public string text;
         public long id;
         public string? username;
+	
     }
     class Program
     {
         static TelegramBotClient Bot = new TelegramBotClient("6197009361:AAENWL8Bjn18gZPhdyUCOcmzPKHpHWLDIlU");
 
         static string fileName = "updates.json";
+
+		const int arrSize = 89;
+		static String[,] NameOfCitiesMatrix = new String[arrSize,2] {{"Астана", "0"}, 
+																	{"Алмата", "0"}, 
+																	{"Абай", "0"},
+																	{"Акколь", "0"},
+																	{"Аксай", "0"},
+																	{"Аксу", "0"},
+																	{"Актау", "0"},
+																	{"Актобе", "0"},
+																	{"Алга", "0"},
+																	{"Алтай", "0"},
+																	{"Аральск", "0"},
+																	{"Аркалык", "0"},
+																	{"Арыс", "0"},
+																	{"Атбасар", "0"},
+																	{"Атырау", "0"},
+																	{"Аягоз", "0"},
+																	{"Байконур", "0"},
+																	{"Балхаш", "0"},
+																	{"Булаево", "0"},
+																	{"Державинск", "0"},
+																	{"Ерейментау", "0"},
+																	{"Есик", "0"},
+																	{"Есиль", "0"},
+																	{"Жанаозен", "0"},
+																	{"Жанатас", "0"},
+																	{"Жаркент", "0"},
+																	{"Жезказган", "0"},
+																	{"Жем", "0"},
+																	{"Жетысай", "0"},
+																	{"Житикара", "0"},
+																	{"Зайса", "0"},
+																	{"Казалинск", "0"},
+																	{"Кандыагаш", "0"},
+																	{"Караганда", "0"},
+																	{"Каражал", "0"},
+																	{"Каратау", "0"},
+																	{"Каркаралинск", "0"},
+																	{"Каскелен", "0"},
+																	{"Кентау", "0"},
+																	{"Кокшетау", "0"},
+																	{"Конаев", "0"},
+																	{"Костанай", "0"},
+																	{"Косшы", "0"},
+																	{"Кульсары", "0"},
+																	{"Курчатов", "0"},
+																	{"Кызылорда", "0"},
+																	{"Ленгер", "0"},
+																	{"Лисаковск", "0"},
+																	{"Макинск", "0"},
+																	{"Мамлютка","0"},
+																	{"Павлодар","0"},
+																	{"Петропавловск","0"},
+																	{"Приозёрск","0"},
+																	{"Риддер","0"},
+																	{"Рудный","0"},
+																	{"Сарань","0"},
+																	{"Сарканд","0"},
+																	{"Сарыагаш","0"},
+																	{"Сатпаев","0"},
+																	{"Семей","0"},
+																	{"Сергеевка","0"},
+																	{"Серебрянск","0"},
+																	{"Степногорск","0"},
+																	{"Степняк","0"},
+																	{"Тайынша","0"},
+																	{"Талгар","0"},
+																	{"Талдыкорган","0"},
+																	{"Тараз","0"},
+																	{"Текели","0"},
+																	{"Темир","0"},
+																	{"Темиртау","0"},
+																	{"Тобыл","0"},
+																	{"Туркестан","0"},
+																	{"Уральск","0"},
+																	{"Усть-Каменогорск","0"},
+																	{"Ушарал","0"},
+																	{"Уштобе","0"},
+																	{"Форт-Шевченко","0"},
+																	{"Хромтау","0"},
+																	{"Шалкар","0"},
+																	{"Шар","0"},
+																	{"Шардара","0"},
+																	{"Шахтинск","0"},
+																	{"Шемонаиха","0"},
+																	{"Шу","0"},
+																	{"Шымкент","0"},
+																	{"Щучинск","0"},
+																	{"Экибастуз","0"},
+																	{"Эмба","0"}
+																	};
+
+		static bool StartGame = false;
+        static bool WrongLetter=false;
+        
+        static bool InsertAgain=false;
+        static bool FirstWord = true;
+        static String UserAnswer,UserAnswerLower;
+        static String botCityName = "";
+        static bool cityFound = false; 
+
+
         static List<BotUpdate> botUpdates = new List<BotUpdate>();
         static void Main(string[] args)
         {
+			StartGame = false;
             //Read all saved updates
             try
             {
@@ -46,7 +152,7 @@ namespace TG_BOT
             };
 
             Bot.StartReceiving(UpdateHandler, ErrorHandler, receiverOptions);
-
+			
             Console.ReadLine();
         }
 
@@ -55,6 +161,8 @@ namespace TG_BOT
             throw new NotImplementedException();
         }
 
+		
+		
         private static async Task UpdateHandler(ITelegramBotClient bot, Update update, CancellationToken arg3)
         {
             if(update.Type == UpdateType.Message)
@@ -66,10 +174,195 @@ namespace TG_BOT
                		{
                     await bot.SendTextMessageAsync(
                         chatId: update.Message.Chat.Id,
-                        text: "Привет");
+                        text: "Привет\n" + "Напишите команду /game чтобы сыграть в города");
 
                     return;
 					}
+                    //Char LastLetterInUserAnswer = 'а';
+					if(StartGame == true){
+						//String CityName;
+
+						
+						// var timer = new Timer(async _ =>
+						// {
+						// 	await bot.SendTextMessageAsync(
+						// 		chatId: update.Message.Chat.Id,
+						// 		text: "Прошло 10 секунд!");
+						// }, null, 10000, Timeout.Infinite);
+						UserAnswer = update.Message.Text;
+                        // if(InsertAgain){
+                        //     if(UserAnswer[0] == botCityName[botCityName.Length-1]){
+						// 			for (int i = 0; i < arrSize; i++)
+						// 			{
+						// 				if (NameOfCitiesMatrix[i, 0] == UserAnswer)
+						// 				{
+						// 					if (NameOfCitiesMatrix[i, 1] == "0")
+						// 					{
+						// 						NameOfCitiesMatrix[i, 1] = "1";
+						// 						cityFound = true;
+                        //                         InsertAgain=false;
+						// 						break;
+						// 					}
+						// 					else
+						// 					{
+						// 						await bot.SendTextMessageAsync(
+						// 							chatId: update.Message.Chat.Id,
+						// 							text: "Город занят");
+						// 						cityFound = true;
+						// 						return;
+						// 					}
+						// 				}
+						// 			}
+									
+						// 			if (!cityFound)
+						// 			{
+						// 				await bot.SendTextMessageAsync(
+						// 					chatId: update.Message.Chat.Id,
+						// 					text: "Город не найден");
+                        //                     return;
+						// 			}
+						// 		}
+                        //         else return;
+                        // }
+						if(FirstWord){
+							for (int i = 0; i < arrSize; i++)
+							{
+								if (NameOfCitiesMatrix[i, 0] == UserAnswer)
+								{
+									if (NameOfCitiesMatrix[i, 1] == "0")
+									{
+										NameOfCitiesMatrix[i, 1] = "1";
+										cityFound = true;
+										//LastLetterInUserAnswer = UserAnswer[UserAnswer.Length - 1];
+										FirstWord = false;
+										break;
+									}
+									else
+									{
+										await bot.SendTextMessageAsync(
+											chatId: update.Message.Chat.Id,
+											text: "Город занят");
+										cityFound = true;
+										return;
+									}
+								}
+							}
+							
+							if (!cityFound)
+							{
+								await bot.SendTextMessageAsync(
+									chatId: update.Message.Chat.Id,
+									text: "Город не найден");
+                                    return;
+							}
+							for(int i = 0; i<arrSize; i++)
+							{
+								botCityName=NameOfCitiesMatrix[i,0].ToLower();
+								if(UserAnswer[UserAnswer.Length-1]==botCityName[0]){
+									if (NameOfCitiesMatrix[i, 1] == "0")
+											{
+												await bot.SendTextMessageAsync(
+												chatId: update.Message.Chat.Id,
+												text: NameOfCitiesMatrix[i,0]);
+												NameOfCitiesMatrix[i,1]="1";
+												//break;
+												return;
+											}
+											else continue;
+                                    await bot.SendTextMessageAsync(
+                                        chatId: update.Message.Chat.Id,
+                                        text: "Я не нашёл подходящий город.\n"+"Вы выйграли!");
+                                        return;
+								}
+
+							}
+						}
+						else {
+                            UserAnswerLower=update.Message.Text.ToLower();
+                            UserAnswer=update.Message.Text;
+                            Console.WriteLine("User - "+UserAnswer);
+								if(UserAnswerLower[0] == botCityName[botCityName.Length-1]){
+									for (int i = 0; i < arrSize; i++)
+									{
+										if (NameOfCitiesMatrix[i, 0] == UserAnswer)
+										{
+											if (NameOfCitiesMatrix[i, 1] == "0")
+											{
+												NameOfCitiesMatrix[i, 1] = "1";
+												cityFound = true;
+                                                InsertAgain=false;
+												return;
+											}
+											else
+											{
+												await bot.SendTextMessageAsync(
+													chatId: update.Message.Chat.Id,
+													text: "Город занят");
+												cityFound = true;
+												return;
+											}
+										}
+                                        else if(UserAnswer!=NameOfCitiesMatrix[i, 0]){
+                                            await bot.SendTextMessageAsync(
+													chatId: update.Message.Chat.Id,
+													text: "Неправильный ввод");
+												cityFound = true;
+												return;
+                                        }
+									}
+									
+									if (!cityFound)
+									{
+										await bot.SendTextMessageAsync(
+											chatId: update.Message.Chat.Id,
+											text: "Город не найден");
+                                            return;
+									}
+								}
+								else{
+									await bot.SendTextMessageAsync(
+													chatId: update.Message.Chat.Id,
+													text: "Первая буква не совпадает");
+                                                    WrongLetter=true;
+									return;
+								}
+                                for(int i = 0; i<arrSize; i++)
+                                {
+                                    botCityName=NameOfCitiesMatrix[i,0].ToLower();
+                                    if(UserAnswer[UserAnswer.Length-1]==botCityName[0]){
+                                        if (NameOfCitiesMatrix[i, 1] == "0")
+                                                {
+                                                    await bot.SendTextMessageAsync(
+                                                    chatId: update.Message.Chat.Id,
+                                                    text: NameOfCitiesMatrix[i,0]);
+                                                    NameOfCitiesMatrix[i,1]="1";
+                                                    return;
+                                                }
+                                                else continue;
+                                        await bot.SendTextMessageAsync(
+                                            chatId: update.Message.Chat.Id,
+                                            text: "Я не нашёл подходящий город.\n"+"Вы выйграли!");
+                                            return;
+                                    }
+                                    else{
+                                        await bot.SendTextMessageAsync(
+                                            chatId: update.Message.Chat.Id,
+                                            text: "Я не нашёл подходящий город.\n"+"Вы выйграли!");
+                                            return;
+                                    }
+                                }
+						}
+					}
+					if (update.Message.Text.ToLower() == "/game")
+               		{
+                    await bot.SendTextMessageAsync(
+                        chatId: update.Message.Chat.Id,
+                        text: "Игра начинается!\n" + "Напишите название города");
+						StartGame = true;
+						
+                    return;
+					}
+					
                     var _botUpdate = new BotUpdate
                     {
                         text = update.Message.Text,
@@ -83,6 +376,7 @@ namespace TG_BOT
 
                     System.IO.File.WriteAllText(fileName, botUpdatesString);
 
+					
                 }
             }
         }
