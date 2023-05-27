@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'CityGameAzureBot'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_BF07F6174F0F4B8CBBC00935621DDC1E }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B7AC1BFB48684EEEA123E94E5EE5A9C1 }}
           package: .
