@@ -196,13 +196,13 @@ namespace TG_BOT
 											await bot.SendTextMessageAsync(
 												chatId: update.Message.Chat.Id,
 												text: "Город занят");
-												timer = new Timer(async _ =>
-												{
-													await bot.SendTextMessageAsync(
-														chatId: update.Message.Chat.Id,
-														text: "Прошло 10 секунд!\n"+"Вы проиграли!");
-													StartGame=false;
-												}, null, 10000, Timeout.Infinite);
+												// timer = new Timer(async _ =>
+												// {
+												// 	await bot.SendTextMessageAsync(
+												// 		chatId: update.Message.Chat.Id,
+												// 		text: "Прошло 10 секунд!\n"+"Вы проиграли!\n"+"Количество набранных очков: "+UserScore+".\n"+"Количество набранных очков ботом: "+BotScore+".");
+												// 	StartGame=false;
+												// }, null, 10000, Timeout.Infinite);
 											cityFound = true;
 											return;
 										}
@@ -214,13 +214,13 @@ namespace TG_BOT
 									await bot.SendTextMessageAsync(
 										chatId: update.Message.Chat.Id,
 										text: "Город не найден");
-										timer = new Timer(async _ =>
-												{
-													await bot.SendTextMessageAsync(
-														chatId: update.Message.Chat.Id,
-														text: "Прошло 10 секунд!\n"+"Вы проиграли!");
-													StartGame=false;
-												}, null, 10000, Timeout.Infinite);
+										// timer = new Timer(async _ =>
+										// 		{
+										// 			await bot.SendTextMessageAsync(
+										// 				chatId: update.Message.Chat.Id,
+										// 				text: "Прошло 10 секунд!\n"+"Вы проиграли!\n"+"Количество набранных очков: "+UserScore+".\n"+"Количество набранных очков ботом: "+BotScore+".");
+										// 			StartGame=false;
+										// 		}, null, 10000, Timeout.Infinite);
 										return;
 								}
 								for(int i = 0; i<arrSize; i++)
@@ -238,7 +238,7 @@ namespace TG_BOT
 												{
 													await bot.SendTextMessageAsync(
 														chatId: update.Message.Chat.Id,
-														text: "Прошло 10 секунд!\n"+"Вы проиграли!");
+														text: "Прошло 10 секунд!\n"+"Вы проиграли!\n"+"Количество набранных очков: "+UserScore+".\n"+"Количество набранных очков ботом: "+BotScore+".");
 													StartGame=false;
 												}, null, 10000, Timeout.Infinite);
 												return;
@@ -251,15 +251,18 @@ namespace TG_BOT
 							else {
 								UserAnswerLower=update.Message.Text.ToLower();
 								UserAnswer=update.Message.Text;
-								timer.Dispose();
 									if(UserAnswerLower[0] == botCityName[botCityName.Length-1]){
 										for (int i = 0; i < arrSize; i++)
 										{
 											if (NameOfCitiesMatrix[i, 0] == UserAnswer){
 												IsLocated=true;
+												timer.Dispose();
 												break;
 											}
-											else IsLocated=false;
+											else{
+												IsLocated=false;
+												timer.Dispose();
+											}
 										}
 										if(!IsLocated){
 											await bot.SendTextMessageAsync(
@@ -270,7 +273,7 @@ namespace TG_BOT
 												{
 													await bot.SendTextMessageAsync(
 														chatId: update.Message.Chat.Id,
-														text: "Прошло 10 секунд!\n"+"Вы проиграли!");
+														text: "Прошло 10 секунд!\n"+"Вы проиграли!\n"+"Количество набранных очков: "+UserScore+".\n"+"Количество набранных очков ботом: "+BotScore+".");
 													StartGame=false;
 												}, null, 10000, Timeout.Infinite);
 												return;
@@ -296,7 +299,7 @@ namespace TG_BOT
 														{
 															await bot.SendTextMessageAsync(
 																chatId: update.Message.Chat.Id,
-																text: "Прошло 10 секунд!\n"+"Вы проиграли!");
+																text: "Прошло 10 секунд!\n"+"Вы проиграли!\n"+"Количество набранных очков: "+UserScore+".\n"+"Количество набранных очков ботом: "+BotScore+".");
 															StartGame=false;
 														}, null, 10000, Timeout.Infinite);
 													cityFound = true;
@@ -314,13 +317,14 @@ namespace TG_BOT
 												{
 													await bot.SendTextMessageAsync(
 														chatId: update.Message.Chat.Id,
-														text: "Прошло 10 секунд!\n"+"Вы проиграли!");
+														text: "Прошло 10 секунд!\n"+"Вы проиграли!\n"+"Количество набранных очков: "+UserScore+".\n"+"Количество набранных очков ботом: "+BotScore+".");
 													StartGame=false;
 												}, null, 10000, Timeout.Infinite);
 												return;
 										}
 									}
 									else{
+										timer.Dispose();
 										await bot.SendTextMessageAsync(
 														chatId: update.Message.Chat.Id,
 														text: "Первая буква не совпадает");
@@ -328,7 +332,7 @@ namespace TG_BOT
 												{
 													await bot.SendTextMessageAsync(
 														chatId: update.Message.Chat.Id,
-														text: "Прошло 10 секунд!\n"+"Вы проиграли!");
+														text: "Прошло 10 секунд!\n"+"Вы проиграли!\n"+"Количество набранных очков: "+UserScore+".\n"+"Количество набранных очков ботом: "+BotScore+".");
 													StartGame=false;
 												}, null, 10000, Timeout.Infinite);
 										return;
@@ -376,7 +380,7 @@ namespace TG_BOT
 														{
 															await bot.SendTextMessageAsync(
 																chatId: update.Message.Chat.Id,
-																text: "Прошло 10 секунд!\n"+"Вы проиграли!");
+																text: "Прошло 10 секунд!\n"+"Вы проиграли!\n"+"Количество набранных очков: "+UserScore+".\n"+"Количество набранных очков ботом: "+BotScore+".");
 															StartGame=false;
 														}, null, 10000, Timeout.Infinite);
 														return;
