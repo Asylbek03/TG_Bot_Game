@@ -140,16 +140,16 @@ namespace TG_BOT
 			static List<BotUpdate> botUpdates = new List<BotUpdate>();
 			static void Main(string[] args)
 			{
-				try
-				{
-					var botUpdatesString = System.IO.File.ReadAllText(fileName);
+// 				try
+// 				{
+// 					var botUpdatesString = System.IO.File.ReadAllText(fileName);
 
-					botUpdates = JsonConvert.DeserializeObject<List<BotUpdate>>(botUpdatesString) ?? botUpdates;
-				}
-				catch(Exception ex)
-				{
-					Console.WriteLine($"Error reading or deserializing {ex}");
-				}
+// 					botUpdates = JsonConvert.DeserializeObject<List<BotUpdate>>(botUpdatesString) ?? botUpdates;
+// 				}
+// 				catch(Exception ex)
+// 				{
+// 					Console.WriteLine($"Error reading or deserializing {ex}");
+// 				}
 
 				var receiverOptions = new ReceiverOptions
 				{
