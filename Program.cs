@@ -29,7 +29,7 @@ namespace TG_BOT
 		}
 		class Program
 		{
-			static TelegramBotClient Bot = new TelegramBotClient("6197009361:AAENWL8Bjn18gZPhdyUCOcmzPKHpHWLDIlU");
+			static TelegramBotClient Bot = new TelegramBotClient("");
 
 			static string fileName = "updates.json";
 
